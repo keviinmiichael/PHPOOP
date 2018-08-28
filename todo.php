@@ -2,30 +2,22 @@
 require_once('Persona.php');
 require_once('Perro.php');
 
-$fran = new Persona;
+$fran = new Persona('Fran',20);
 
-$fran->setNombre('Fran');
+$lola = new Perro('Lola','BorderCollie');
+$manolo = new Perro('Manolo','Boxer');
+$enzo = new Perro('Enzo','Rottwailer');
+$ticu = new Perro('Ticu','pp');
+$bonobon = new Perro('BonOBon','Caniche');
 
-$lola = new Perro;
+$kevin = new Persona('Kevin',25);
 
-$lola->setNombre('Lola');
-$lola->setRaza('BorderCollie');
 
 $fran->setPerro($lola);
+$fran->setPerro($manolo);
+$fran->setPerro($enzo);
 
+$kevin->setPerro($ticu);
+$kevin->setPerro($bonobon);
 
-echo $fran->jugarConPerro();
-
-
-$perroReemplazo = new Perro;
-$perroReemplazo->setNombre('LolaDeReemplazo');
-
-$fran->setPerro($perroReemplazo);
-echo "<br>";
-echo "<br>";
-echo $fran->jugarConPerro();
-
-echo "<br>";
-echo "<br>";
-
-echo $fran->enganiarAMiPerro($lola);
+$fran->jugarConTodos($kevin);

@@ -5,6 +5,12 @@ class Perro
     private $nombre;
     private $raza;
 
+    public function __construct(string $nombre,string $raza)
+    {
+        $this->nombre = $nombre;
+        $this->raza = $raza;
+    }
+
     public function setNombre($name)
     {
         $this->nombre = $name;
@@ -27,5 +33,12 @@ class Perro
     public function hacerRuido()
     {
         return 'Guau Guau';
+    }
+
+    public function jugarConOtroPerro(Perro $perro)
+    {
+        echo $this->getNombre() . ' dijo: ' .$this->hacerRuido();
+        echo "<br>";
+        echo $perro->getNombre() . ' dijo: ' .$perro->hacerRuido();
     }
 }

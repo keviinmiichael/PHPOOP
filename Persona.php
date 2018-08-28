@@ -4,8 +4,14 @@ class Persona
 {
     private $nombre;
     private $edad;
-    private $perro;
+    private $perros;
 
+    public function __construct(string $nombre,int $edad)
+    {
+        $this->nombre = $nombre;
+        $this->edad = $edad;
+        $this->perros = [];
+    }
 
     public function setNombre($name)
     {
@@ -13,11 +19,15 @@ class Persona
     }
     public function setPerro(Perro $perro)
     {
-        $this->perro = $perro;
+        if (count($this->perros) < 3) {
+            $this->perros[] = $perro;
+        }else {
+            echo 'No podes tener mas perros, PERRO';
+        }
     }
-    public function getPerro()
+    public function getPerros()
     {
-        return $this->perro;
+        return $this->perros;
     }
 
     public function getNombre()
@@ -26,14 +36,31 @@ class Persona
     }
 
 
-    public function jugarConPerro(){
-        return $this->perro->getNombre () .' dijo: '.$this->perro->hacerRuido();
+    public function jugarConPerros(){
+        foreach ($this->perros as $perro) {
+            echo $perro->getNombre() . " dijo: ". $perro->hacerRuido();
+            echo "<br>";
+        }
     }
 
-    public function enganiarAMiPerro(Perro $perro)
+    public function jugarConOtros($persona)
     {
-        return $perro->getNombre () .' dijo: '.$perro->hacerRuido();
+        foreach ($persona->getPerros() as $perro) {
+            echo $perro->getNombre() . " dijo: ". $perro->hacerRuido();
+            echo "<br>";
+        }
     }
+
+    public function jugarConTodos($persona)
+    {
+        foreach ($this->perros as $perro) {
+            foreach ($persona->getPerros() as $perroDeOtro) {
+                echo $perro->jugarConOtroPerro($perroDeOtro);
+                echo "<br>";
+            }
+        }
+    }
+
 
 
 
