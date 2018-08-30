@@ -2,7 +2,7 @@
 
 
 abstract class Cuenta{
-    private $saldo;
+    protected $saldo;
     protected $cliente;
 
     public function __construct(Cliente $cliente)
@@ -13,6 +13,7 @@ abstract class Cuenta{
 
     public function depositar(int $saldo)
     {
+        $saldo = $saldo - 100;
         $this->saldo+=$saldo;
     }
 
